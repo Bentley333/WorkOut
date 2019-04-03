@@ -1,0 +1,92 @@
+$newmadeform = New-Object System.Windows.Forms.Form
+$newmadeform.Text = " The backcolor Game"
+$newmadeform.Height = 600
+$newmadeform.Width = 600
+$newmadeform.AutoSize = $true
+$newmadeform.BackColor = "Red"
+
+
+
+$Font = New-Object System.Drawing.Font("times new roman",18,[System.Drawing.FontStyle]::Italic)
+$newmadeform.font = $font 
+
+$Title = New-Object System.Windows.Forms.Label
+$Title.Text = "Pick the color of the background!"
+$title.autosize = $true
+$Title.Location = New-Object System.drawing.Point(10,10)
+$newmadeform.Controls.Add($Title)
+
+$checkbox = new-object System.Windows.Forms.CheckBox
+$checkbox.Text = "is the color Red"
+$checkbox.Location = New-Object System.Drawing.Point(10,100)
+$checkbox.AutoSize = $true
+$checkbox.Checked = $false
+$checkbox.add_checkstatechanged({
+if ($checkBox.Checked){
+    $checkBox2.Enabled = $false
+    $checkbox3.enabled = $false
+    $newmadeform.BackColor = "blue"
+    $button.add_click({ Start-Process "https://www.merriam-webster.com/dictionary/Red"})
+    }
+  else{
+    $checkBox2.Enabled = $true
+    $checkbox3.Enabled = $true}})
+
+$newmadeform.Controls.Add($checkbox)
+
+$checkbox2 = new-object System.Windows.Forms.CheckBox
+$checkbox2.Text = "is the color green"
+$checkbox2.Location = New-Object System.Drawing.Point(10,150)
+$checkbox2.AutoSize = $true
+$checkbox2.add_checkstatechanged({
+if ($checkBox2.Checked){
+    $checkBox.Enabled = $false
+    $checkbox3.enabled = $false
+    $newmadeform.BackColor = "Red"
+    $button.add_click({ Start-Process "https://www.merriam-webster.com/dictionary/Green"})
+   }
+  else{
+    $checkBox.Enabled = $true
+    $checkbox3.Enabled = $true}})
+$newmadeform.Controls.Add($checkbox2)
+
+$checkbox3 = new-object System.Windows.Forms.CheckBox
+$checkbox3.Text = "is the color BLue"
+$checkbox3.Location = New-Object System.Drawing.Point(10,200)
+$checkbox3.autosize = $true
+$checkbox3.add_checkstatechanged({
+if ($checkBox3.Checked){
+    $checkBox.Enabled = $false
+    $checkbox2.enabled = $false
+    $newmadeform.BackColor = "Green"
+    $button.add_click({ Start-Process "https://www.merriam-webster.com/dictionary/blue"})
+    
+     }
+  else{
+    $checkBox2.Enabled = $true
+    $checkbox.Enabled = $true}})
+$newmadeform.Controls.Add($checkbox3)
+
+$button = New-Object System.Windows.Forms.Button
+$button.Text = "click here to see the deffinition"
+$button.location = New-Object System.Drawing.Point(50,300)
+$button.AutoSize = $true
+$newmadeform.Controls.Add($button)
+
+$button2 = New-Object System.Windows.Forms.Button
+$button2.Text = "Next"
+$button2.location = New-Object System.Drawing.Point(100,500)
+$button2.AutoSize = $true
+
+$button2.add_click({
+$newmadeform2
+})
+ 
+$newmadeform.Controls.Add($button2)
+
+
+
+
+
+$newmadeform.ShowDialog()
+
