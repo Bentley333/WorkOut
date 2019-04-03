@@ -1,0 +1,332 @@
+# trying to make a word doc to log the workouts.   
+   
+   
+   $workout.MinimizeBox = $False
+    $workout.MaximizeBox = $False
+    $workout.StartPosition =  "centerscreen"
+    #core
+$title = New-Object System.Windows.Forms.Label
+    $title.Font = New-Object System.Drawing.Font("times new Roman",20)
+    $title.Text = "Core workouts"
+    $title.Size = New-Object System.Drawing.Size (20)
+    $title.Location = New-Object System.Drawing.Point (300,10)
+    $title.AutoSize = $True
+$workout.Controls.Add($title)
+
+#1 page click Cardio
+function button_click()
+{
+
+
+#Cardio
+$cardio = New-Object System.Windows.Forms.Form
+$Cardio.Text = "lets log your hard workout"
+    $cardio.AutoSize = $True
+    $cardio.FormBorderStyle = "fixeddialog"
+    $cardio.Height = (800)
+    $cardio.Width = (800)
+    $cardio.MinimizeBox = $False
+    $cardio.MaximizeBox = $False
+    $cardio.StartPosition =  "centerscreen"
+    #cardio
+$title2 = New-Object System.Windows.Forms.Label
+    $title2.Font = New-Object System.Drawing.Font("times new Roman",20)
+    $title2.Text = "Cardio workouts"
+    $title2.Size = New-Object System.Drawing.Size (20)
+    $title2.Location = New-Object System.Drawing.Point (300,10)
+    $title2.AutoSize = $True
+$cardio.Controls.Add($title2)
+
+#2 page click Legs
+function button_click2()
+{
+#Legs
+$Legs = New-Object System.Windows.Forms.Form
+$legs.Text = "lets log your hard workout"
+    $legs.AutoSize = $True
+    $legs.FormBorderStyle = "fixeddialog"
+    $legs.Height = (800)
+    $legs.Width = (800)
+    $legs.MinimizeBox = $False
+    $legs.MaximizeBox = $False
+    $legs.StartPosition =  "centerscreen"
+    #legs
+$title3 = New-Object System.Windows.Forms.Label
+    $title3.Font = New-Object System.Drawing.Font("times new Roman",20)
+    $title3.Text = "Leg workouts"
+    $title3.Size = New-Object System.Drawing.Size (20)
+    $title3.Location = New-Object System.Drawing.Point (300,10)
+    $title3.AutoSize = $True
+$Legs.Controls.Add($title3)
+
+#click 3 
+Function button_click3()
+{
+$Close = New-Object System.Windows.Forms.Form
+$close.Text = "lets log your hard workout"
+    $close.AutoSize = $True
+    $close.FormBorderStyle = "fixeddialog"
+    $close.Height = (800)
+    $close.Width = (800)
+    $close.MinimizeBox = $False
+    $close.MaximizeBox = $False
+    $close.StartPosition =  "centerscreen"
+    #Close
+$title4 = New-Object System.Windows.Forms.Label
+    $title4.Font = New-Object System.Drawing.Font("times new Roman",30)
+    $title4.Text = "Workout has been loged `n Enjoy!!"
+    $title4.Size = New-Object System.Drawing.Size (20)
+    $title4.Location = New-Object System.Drawing.Point (100,200)
+    $title4.AutoSize = $True
+$Close.Controls.Add($title4)
+
+
+
+$button14 = New-Object System.Windows.Forms.Button
+    $button14.Text = "Log event"
+    $button14.Location = New-Object System.Drawing.Point (400,700)
+    $button14.AutoSize = $True
+    $button14.add_click({button_click4})
+$Close.Controls.Add($button14)
+
+$Legs.Close()
+
+$close.ShowDialog()
+
+}
+
+#legs
+$button23 = New-Object System.Windows.Forms.Button
+    $button23.Text = "Exercise Definition"
+    $button23.Location = New-Object System.Drawing.Point (370,600)
+    $button23.AutoSize = $True
+$legs.Controls.Add($button23)
+
+
+#legs
+$button13 = New-Object System.Windows.Forms.Button
+    $button13.Text = "Next Page"
+    $button13.Location = New-Object System.Drawing.Point (400,700)
+    $button13.AutoSize = $True
+    $button13.add_click({button_click3})
+$legs.Controls.Add($button13)
+
+
+
+
+#check Boxs Legs
+$check13 = New-object System.Windows.Forms.CheckBox
+    $check13.Text = "Box jumps"
+    $check13.Location = New-Object System.Drawing.Point(10,100)
+    $check13.Autosize =$true
+    $check13.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check13.add_checkstatechanged({
+if ($check13.Checked){
+    $check23.Enabled = $false
+    $check33.Enabled = $false
+    $button23.add_click({ Start-Process "https://www.bodybuilding.com/exercises/front-box-jump"})}
+ else{
+    $check23.Enabled = $true
+    $check33.Enabled = $true}})
+
+$legs.Controls.Add($check13)
+#legs
+$check23= New-object System.Windows.Forms.CheckBox
+    $check23.Text = "Lunges"
+    $check23.Location = New-Object System.Drawing.Point(10,200)
+    $check23.Autosize =$true
+    $check23.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check23.add_checkstatechanged({
+if ($check23.Checked){
+    $check13.Enabled = $false
+    $check33.Enabled = $false
+    $button23.add_click({ Start-Process "https://www.mensjournal.com/health-fitness/15-best-lunge-variations/2-walking-lunge/"})}
+ else{
+    $check13.Enabled = $true
+    $check33.Enabled = $true}})
+
+$legs.Controls.Add($check23)
+#legs
+$check33 = New-object System.Windows.Forms.CheckBox
+    $check33.Text = "Squats"
+    $check33.Location = New-Object System.Drawing.Point(10,300)
+    $check33.Autosize =$true
+    $check33.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check33.add_checkstatechanged({
+if ($check33.Checked){
+    $check13.Enabled = $false
+    $check23.Enabled = $false
+    $button23.add_click({ Start-Process "https://www.shape.com/fitness/workouts/16-squats-thatll-work-your-butt"})}
+ else{
+    $check13.Enabled = $true
+    $check23.Enabled = $true}})
+
+$legs.Controls.Add($check33)
+
+
+$cardio.Close()
+
+$legs.ShowDialog()
+#end of legs
+}
+#carido
+$button22 = New-Object System.Windows.Forms.Button
+    $button22.Text = "Exercise Definition"
+    $button22.Location = New-Object System.Drawing.Point (370,600)
+    $button22.AutoSize = $True
+$Cardio.Controls.Add($button22)
+
+
+#CArdio
+$button12 = New-Object System.Windows.Forms.Button
+    $button12.Text = "Next Page"
+    $button12.Location = New-Object System.Drawing.Point (400,700)
+    $button12.AutoSize = $True
+    $button12.add_click({button_click2})
+$Cardio.Controls.Add($button12)
+
+
+
+
+#check Boxs Cardio
+$check12 = New-object System.Windows.Forms.CheckBox
+    $check12.Text = "Running"
+    $check12.Location = New-Object System.Drawing.Point(10,100)
+    $check12.Autosize =$true
+    $check12.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check12.add_checkstatechanged({
+if ($check12.Checked){
+    $check22.Enabled = $false
+    $check32.Enabled = $false
+    $button12.Add_click({ Get-Item -Path $date 
+$Selection.typetext("Running") 
+$doc.saveas("C:\Users\wwstudent\Desktop\Asure\$Date")
+$doc.close()})
+    $button22.add_click({ Start-Process "https://www.verywellfit.com/effective-30-minute-running-workouts-2911891"})}
+ else{
+    $check22.Enabled = $true
+    $check32.Enabled = $true}})
+
+$Cardio.Controls.Add($check12)
+#cardio
+$check22= New-object System.Windows.Forms.CheckBox
+    $check22.Text = "cycleing"
+    $check22.Location = New-Object System.Drawing.Point(10,200)
+    $check22.Autosize =$true
+    $check22.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check22.add_checkstatechanged({
+if ($check22.Checked){
+    $check12.Enabled = $false
+    $check32.Enabled = $false
+    $button22.add_click({ Start-Process "https://www.self.com/story/4-ways-to-turn-the-stationary-bike-into-a-fat-burning-machine"})}
+ else{
+    $check12.Enabled = $true
+    $check32.Enabled = $true}})
+
+$Cardio.Controls.Add($check22)
+#Cardio
+$check32 = New-object System.Windows.Forms.CheckBox
+    $check32.Text = "Jump Rope"
+    $check32.Location = New-Object System.Drawing.Point(10,300)
+    $check32.Autosize =$true
+    $check32.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check32.add_checkstatechanged({
+if ($check32.Checked){
+    $check12.Enabled = $false
+    $check22.Enabled = $false
+    $button22.add_click({ Start-Process "https://www.crossrope.com/blog/beginner-jump-rope-workout/"})}
+ else{
+    $check12.Enabled = $true
+    $check22.Enabled = $true}})
+
+$Cardio.Controls.Add($check32)
+
+
+$workout.Close()
+
+$cardio.ShowDialog()
+#cadio
+}
+
+
+#core
+$button2 = New-Object System.Windows.Forms.Button
+    $button2.Text = "Exercise Definition"
+    $button2.Location = New-Object System.Drawing.Point (370,600)
+    $button2.AutoSize = $True
+$workout.Controls.Add($button2)
+
+#core
+
+$button1 = New-Object System.Windows.Forms.Button
+    $button1.Text = "Next Page"
+    $button1.Location = New-Object System.Drawing.Point (400,700)
+    $button1.AutoSize = $True
+    $button1.add_click({button_click})
+$workout.Controls.Add($button1)
+
+
+
+
+#check Boxs Core
+$check1 = New-object System.Windows.Forms.CheckBox
+    $check1.Text = "Sit up's"
+    $check1.Location = New-Object System.Drawing.Point(10,100)
+    $check1.Autosize =$true
+    $check1.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check1.add_checkstatechanged({
+if ($check1.Checked){
+    $check2.Enabled = $false
+    $check3.Enabled = $false
+    $button2.add_click({ Start-Process "https://www.livestrong.com/article/480439-the-best-home-sit-ups-workout-for-quick-abs"})}
+ else{
+    $check2.Enabled = $true
+    $check3.Enabled = $true}})
+
+$workout.Controls.Add($check1)
+#core
+$check2 = New-object System.Windows.Forms.CheckBox
+    $check2.Text = "Planks"
+    $check2.Location = New-Object System.Drawing.Point(10,200)
+    $check2.Autosize =$true
+    $check2.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check2.add_checkstatechanged({
+if ($check2.Checked){
+    $check1.Enabled = $false
+    $check3.Enabled = $false
+    $button1.Add_click({$word = new-object -com word.application})
+$doc = $word.documents.add()
+$pn = $doc.sections.item(1).footers.item(3).pagenumbers.add()
+$Selection = $word.Selection 
+$Selection.typetext("Planks")
+$date = get-date -format MM-dd-yyyy
+$doc.saveas("C:\Users\wwstudent\Desktop\Asure\$Date")
+$doc.close()
+$button2.add_click({ Start-Process "https://darebee.com/workouts/five-minute-plank-workout.html"})}
+ else{
+    $check1.Enabled = $true
+    $check3.Enabled = $true}})
+
+$workout.Controls.Add($check2)
+
+#core
+$check3 = New-object System.Windows.Forms.CheckBox
+    $check3.Text = "Jack knifes"
+    $check3.Location = New-Object System.Drawing.Point(10,300)
+    $check3.Autosize =$true
+    $check3.Font = New-Object System.Drawing.Font("times new Roman",18)
+$check3.add_checkstatechanged({
+if ($check3.Checked){
+    $check1.Enabled = $false
+    $check2.Enabled = $false
+    $button2.add_click({ Start-Process "https://www.bodybuilding.com/exercises/jackknife-sit-up"})}
+ else {
+    $check1.Enabled = $true
+    $check2.Enabled = $true}})
+
+
+$workout.Controls.Add($check3)
+
+
+#end for show 
+$workout.ShowDialog()
